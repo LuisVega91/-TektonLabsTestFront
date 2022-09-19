@@ -18,12 +18,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./modules/admins/admins.module').then((m) => m.AdminsModule),
   },
-  {
-    path: 'genres',
-    loadChildren: () =>
-      import('./modules/genres/genres.module').then((m) => m.GenresModule),
-  },
-  ...defaultRoute('auth'),
+  ...defaultRoute('auth/login'),
 ];
 
 @NgModule({
