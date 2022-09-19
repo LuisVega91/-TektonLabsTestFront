@@ -1,3 +1,4 @@
+import { JwtInterceptor } from './common/interceptors/jwt.interceptor';
 import { MaterialModule } from './common/modules/material/material.module';
 import { ModalModule } from './common/modules/modal/modal.module';
 import { NgModule } from '@angular/core';
@@ -27,6 +28,11 @@ import { ErrorHandlerInterceptor } from './common/interceptors/error-handler.int
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorHandlerInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
       multi: true
     },
   ],
