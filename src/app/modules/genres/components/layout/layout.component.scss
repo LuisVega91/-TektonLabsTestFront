@@ -1,0 +1,10 @@
+@import '../../../../../styles.scss';
+
+mat-card{
+  margin-inline: 10vw;
+  margin-block: 10vh;
+  @include media(mobile-only) {
+    margin-inline: 10px;
+    margin-block: 10px;
+  }
+}
