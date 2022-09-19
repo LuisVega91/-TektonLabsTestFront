@@ -1,0 +1,31 @@
+<mat-sidenav-container [hasBackdrop]="true" autosize>
+  <mat-sidenav #drawer mode="side">
+    <mat-list>
+      <mat-list-item>
+        <button mat-button [routerLink]="['/admins/genres/list']">
+          Genres
+        </button>
+      </mat-list-item>
+      <mat-list-item>
+        <button mat-button [routerLink]="['/admins/songs/list']">Songs</button>
+      </mat-list-item>
+      <mat-list-item>
+        <button mat-button [routerLink]="['/admins/users/list']">Users</button>
+      </mat-list-item>
+    </mat-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar color="warn">
+      <button mat-icon-button (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>Admin Panel</span>
+      <span class="spacer"></span>
+      <button mat-icon-button>
+        <mat-icon> admin_panel_settings </mat-icon>
+      </button>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
