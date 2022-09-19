@@ -8,7 +8,7 @@ export type RegisterPayloadType = {
 
 export type RegisterResponseType = {
   email?: string;
-  role?: string;
+  role?: UserRoles;
   id?: number;
   createAt?: string;
   updateAt?: string;
@@ -17,7 +17,7 @@ export type RegisterResponseType = {
 
 export class RegisterResponseModel {
   email?: string;
-  role?: string;
+  role?: UserRoles;
   id?: number;
   createAt?: Date;
   updateAt?: Date;
@@ -40,7 +40,7 @@ export type LoginResponseType = {
   access_token?: string;
   user?: {
     email?: string;
-    role?: string;
+    role?: UserRoles;
     id?: number;
     createAt?: string;
     updateAt?: string;
@@ -52,7 +52,7 @@ export class LoginResponseModel {
   access_token?: string;
   user: {
     email?: string;
-    role?: string;
+    role?: UserRoles;
     id?: number;
     createAt?: Date;
     updateAt?: Date;

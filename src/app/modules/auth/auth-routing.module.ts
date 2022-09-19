@@ -21,7 +21,7 @@ const routes: Routes = [
       ...defaultRoute('login'),
     ],
   },
-  ...defaultRoute(''),
+  ...defaultRoute('login'),
 ];
 
 @NgModule({

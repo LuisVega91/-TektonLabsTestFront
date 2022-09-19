@@ -54,12 +54,7 @@ export class LoginComponent implements OnInit {
   onLogin() {
     this.authService.login(this.form.value).subscribe({
       next: (resp) => {
-        this.modalService.openDoneModal(
-          `Welcome ${resp.user.email}`,
-          () => {
-            this.router.navigate(['/genres']);
-          }
-        );
+        this.modalService.openDoneModal(`Welcome ${resp.user.email}`);
       },
     });
   }
