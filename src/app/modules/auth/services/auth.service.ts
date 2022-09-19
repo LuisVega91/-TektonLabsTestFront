@@ -8,7 +8,7 @@ import {
   RegisterResponseType,
   LoginPayloadType,
   LoginResponseType,
-  LoginResponseModel,
+  CurrentUserModel,
 } from './auth-services.types';
 import { map, Observable, BehaviorSubject } from 'rxjs';
 import { Injectable } from '@angular/core';
@@ -22,11 +22,11 @@ import { environment } from './../../../../environments/environment';
 export class AuthService {
   private url = environment.apiUrl;
   private apiKey = environment.apiKey;
-  private currentUser: LoginResponseModel = new LoginResponseModel(
+  private currentUser: CurrentUserModel = new CurrentUserModel(
     JSON.parse(localStorage.getItem(CURRENT_USER_KEY) || '{}') || {}
   );
 
-  public currentUser$: BehaviorSubject<LoginResponseModel> =
+  public currentUser$: BehaviorSubject<CurrentUserModel> =
     new BehaviorSubject(this.currentUser);
 
   httpOptions = {
@@ -37,7 +37,7 @@ export class AuthService {
 
   private saveToLocalStorage(currentUser: LoginResponseType) {
     localStorage.setItem(CURRENT_USER_KEY, JSON.stringify(currentUser));
-    this.currentUser = new LoginResponseModel(
+    this.currentUser = new CurrentUserModel(
       JSON.parse(localStorage.getItem(CURRENT_USER_KEY) || '{}') || {}
     );
     this.currentUser$.next(this.currentUser);
@@ -59,14 +59,14 @@ export class AuthService {
       .pipe(map((resp) => new RegisterResponseModel(resp)));
   }
 
-  login(credentials: LoginPayloadType): Observable<LoginResponseModel> {
+  login(credentials: LoginPayloadType): Observable<CurrentUserModel> {
     return this.http
       .post<LoginResponseType>(`${this.url}/auth/login`, credentials)
       .pipe(
         map((resp) => {
           this.saveToLocalStorage(resp);
           this.routerHomeByRole(resp.user!.role!);
-          return new LoginResponseModel(resp);
+          return new CurrentUserModel(resp);
         })
       );
   }

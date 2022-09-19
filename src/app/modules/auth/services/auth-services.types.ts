@@ -48,7 +48,7 @@ export type LoginResponseType = {
   };
 };
 
-export class LoginResponseModel {
+export class CurrentUserModel {
   access_token?: string;
   user: {
     email?: string;
