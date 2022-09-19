@@ -1,0 +1,23 @@
+.main {
+  padding: 4rem 1rem;
+
+  mat-card {
+    max-width: 300px;
+    margin: 2rem auto;
+    text-align: center;
+  }
+
+  .form {
+    &__field {
+      width: 100%;
+      &--separator {
+        width: 100%;
+        margin-bottom: 2rem;
+      }
+    }
+  }
+
+  &__link {
+    padding-block: 50px;
+  }
+}

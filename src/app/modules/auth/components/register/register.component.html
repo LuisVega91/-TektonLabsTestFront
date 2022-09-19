@@ -1,0 +1,66 @@
+<main class="main">
+  <mat-card>
+    <mat-card-content>
+      <h1>REGISTER</h1>
+      <form
+        class="form"
+        autocomplete="off"
+        [formGroup]="form"
+        (ngSubmit)="onRegister()"
+      >
+        <mat-form-field class="form__field">
+          <input
+            text="text"
+            formControlName="email"
+            matInput
+            placeholder="email"
+            required
+          />
+          <mat-error *ngIf="isInvalidEmail">
+            {{ errorMessageEmail }}
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form__field">
+          <mat-select placeholder="role" formControlName="role">
+            <mat-option [value]="null" disabled>Select Role</mat-option>
+            <mat-option *ngFor="let role of roles" [value]="role.value">{{role.name}}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="isInvalidRole">
+            {{ errorMessageRole }}
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form__field--separator">
+          <input
+            [type]="hide ? 'password' : 'text'"
+            formControlName="password"
+            matInput
+            placeholder="Password"
+            required
+          />
+          <button mat-icon-button matSuffix (click)="hide = !hide">
+            <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+          </button>
+          <mat-error *ngIf="isInvalidPassword">
+            {{ errorMessagePassword }}
+          </mat-error>
+        </mat-form-field>
+
+        <button
+          class="form__field"
+          [disabled]="form.invalid"
+          type="submit"
+          mat-raised-button
+          color="primary"
+        >
+          Register
+        </button>
+      </form>
+
+      <mat-card-footer class="main__link">
+        <a [routerLink]="['/auth/login']">Login</a>
+      </mat-card-footer>
+    </mat-card-content>
+  </mat-card>
+</main>
